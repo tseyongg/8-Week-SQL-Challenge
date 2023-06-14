@@ -12,4 +12,4 @@ Note:
 
 Please find the solution links for the case studies below. Simply click on the links to access each solution.
 - 🍜[Project #1: Danny's Diner](https://github.com/tseyongg/Tse_Yong_SQL_Projects/tree/main/Project%20%231%20-%20Danny's%20Diner)
-
+- 🍕[Project #2: Pizza Runner](https://github.com/tseyongg/Tse_Yong_SQL_Projects/tree/main/Project%20%232%20-%20Pizza%20Runner)
