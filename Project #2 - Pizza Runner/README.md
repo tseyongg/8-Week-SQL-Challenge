@@ -4,12 +4,8 @@
 ## 📚 Table of Contents
 - [Business Task](#business-task)
 - [Entity Relationship Diagram](#entity-relationship-diagram)
-- Solutions
-  - [Data Cleaning and Transformation](#-data-cleaning--transformation)
-  - [A. Pizza Metrics](#a-pizza-metrics)
-  - [B. Runner and Customer Experience](#b-runner-and-customer-experience)
-  - [C. Ingredient Optimisation](#c-ingredient-optimisation)
-  - [D. Pricing and Ratings](#d-pricing-and-ratings)
+- [Data Cleaning](#data-cleaning)
+- [Solutions](#solutions)
 
 Note: All information regarding the case study has been sourced from the following [link](https://8weeksqlchallenge.com/case-study-2/).
 
@@ -25,3 +21,32 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 ## Entity Relationship Diagram
 
 ![Pizza Runner](https://user-images.githubusercontent.com/81607668/242152356-78099a4e-4d0e-421f-a560-b72e4321f530.png)
+
+***
+
+## Data Cleaning
+
+There are some known data issues with few tables. Data cleaning was performed and saved in temporary tables before attempting the case study solutions.
+
+`customer_orders` table
+
+- The exclusions and extras columns in customer_orders table will need to be cleaned up before using them in the queries.
+- In the exclusions and extras columns, there are blank spaces and null values.
+
+`runner_orders` table
+
+- The pickup_time, distance, duration and cancellation columns in runner_orders table will need to be cleaned up before using them in the queries.
+- In the pickup_time column, there are null values.
+- In the distance column, there are null values. It contains the unit - km. The 'km' must be stripped
+- In the duration column, there are null values. The 'minutes', 'mins', 'minute' units must be stripped
+- In the cancellation column, there are blank spaces and null values.
+
+***
+
+## Solutions
+
+  - [A. Pizza Metrics]()
+  - [B. Runner and Customer Experience]()
+  - [C. Ingredient Optimisation]()
+  - [D. Pricing and Ratings]()
+  - [E. Bonus Questions]()
