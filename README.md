@@ -6,7 +6,7 @@ Credit to [Data With Danny](https://www.linkedin.com/company/datawithdanny/) for
 
 Note:
 
-- Solutions are coded in **SSMS** 
+- Solutions are coded in **Microsoft SSMS** 
 
 ## 📚 Table of Contents
 
