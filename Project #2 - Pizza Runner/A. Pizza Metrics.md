@@ -19,7 +19,7 @@
 
 ````sql
 SELECT COUNT(order_id) AS pizza_count
-FROM customer_orders_cte;
+FROM #customer_orders_temp;
 ````
 
 | pizza_count |
@@ -32,9 +32,29 @@ FROM customer_orders_cte;
 
 ````sql
 SELECT COUNT(DISTINCT order_id) AS unique_orders
-FROM customer_orders_cte;
+FROM #customer_orders_temp;
 ````
 
 | unique_orders |
 | ------------- | 
 | 10            |
+
+***
+
+### Q3. How many successful orders were delivered by each runner?
+
+````sql
+SELECT 
+  runner_id,
+  COUNT(order_id) AS successful_orders_count
+FROM #runner_orders_temp
+WHERE cancellation IS NULL
+GROUP BY runner_id
+````
+
+| runner_id | successful_orders_count  |
+| --------- | ------------------------ |
+| 1         | 4                        |
+| 2         | 3                        |
+| 3         | 1                        |
+
