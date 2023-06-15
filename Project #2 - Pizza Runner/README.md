@@ -47,7 +47,7 @@ There are some known data issues with few tables. Data cleaning was performed an
 
 This is a lengthy case study, thus, it is divided into five sections (after data cleaning).
 
-  - [0. Data Cleaning]()
+  - [0. Data Cleaning](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/0.%20Data%20Clean.md)
   - [A. Pizza Metrics]()
   - [B. Runner and Customer Experience]()
   - [C. Ingredient Optimisation]()
