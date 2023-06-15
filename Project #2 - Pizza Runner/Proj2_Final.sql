@@ -10,6 +10,8 @@
 
 --a.
 
+DROP TABLE IF EXISTS #customer_orders_temp;
+
 SELECT
   order_id,
   customer_id,
@@ -31,6 +33,8 @@ SELECT *
 FROM #customer_orders_temp;
 
 --b.
+
+DROP TABLE IF EXISTS #runner_orders_temp;
 
 SELECT 
   order_id, 
@@ -81,4 +85,17 @@ SELECT
   COUNT(order_id) AS successful_orders_count
 FROM #runner_orders_temp
 WHERE cancellation IS NULL
-GROUP BY runner_id
+GROUP BY runner_id;
+
+--4.
+
+SELECT 
+  pizza_name,
+  COUNT(*) AS delivered_count
+FROM #customer_orders_temp AS c
+JOIN pizza_names AS p 
+  ON c.pizza_id = p.pizza_id
+JOIN #runner_orders_temp AS r 
+  ON c.order_id = r.order_id
+WHERE r.cancellation IS NULL
+GROUP BY p.pizza_name;
