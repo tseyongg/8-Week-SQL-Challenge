@@ -45,6 +45,9 @@ There are some known data issues with few tables. Data cleaning was performed an
 
 ## Solutions
 
+This is a lengthy case study, thus, it is divided into five sections (after data cleaning).
+
+  - [0. Data Cleaning]()
   - [A. Pizza Metrics]()
   - [B. Runner and Customer Experience]()
   - [C. Ingredient Optimisation]()
