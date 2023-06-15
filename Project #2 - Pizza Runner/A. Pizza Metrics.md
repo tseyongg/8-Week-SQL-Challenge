@@ -15,8 +15,26 @@
 
 ***
 
-### How many pizzas were ordered?
+### Q1. How many pizzas were ordered?
 
 ````sql
-
+SELECT COUNT(order_id) AS pizza_count
+FROM customer_orders_cte;
 ````
+
+| pizza_count |
+| ----------- |
+| 14          |
+
+***
+
+### Q2. How many unique customer orders were made?
+
+````sql
+SELECT COUNT(DISTINCT order_id) AS unique_orders
+FROM customer_orders_cte;
+````
+
+| unique_orders |
+| ------------- | 
+| 10            |
