@@ -15,11 +15,11 @@ WITH customer_orders_cte AS
     customer_id,
     pizza_id,
     CASE 
-  	  WHEN exclusions IS NULL OR exclusions LIKE 'null' THEN ''
+      WHEN exclusions IS NULL OR exclusions LIKE 'null' THEN ''
       ELSE exclusions 
       END AS exclusions,
     CASE 
-  	  WHEN extras IS NULL OR extras LIKE 'null' THEN ''
+      WHEN extras IS NULL OR extras LIKE 'null' THEN ''
       ELSE extras 
       END AS extras,
     order_time
