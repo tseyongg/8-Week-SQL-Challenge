@@ -126,3 +126,31 @@ ORDER BY pizza_count DESC;
 ***
 
 ## Q7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?
+
+````sql
+SELECT 
+  customer_id,
+  SUM(CASE WHEN exclusions != '' OR extras != '' THEN 1 ELSE 0 END) AS had_changes,
+  SUM(CASE WHEN exclusions = '' AND extras = '' THEN 1 ELSE 0 END) AS no_changes
+FROM #customer_orders_temp c
+JOIN #runner_orders_temp r 
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL
+GROUP BY customer_id
+````
+
+| customer_id | had_changes | no_changes |
+| ----------- | ----------- | ---------- |
+| 101         | 0           | 2          |
+| 102         | 0           | 3          |
+| 103         | 3           | 0          |
+| 104         | 2           | 1          |
+| 105         | 1           | 0          |
+
+***
+
+## Q8. How many pizzas were delivered that had both exclusions and extras?
+
+````sql
+
+````
