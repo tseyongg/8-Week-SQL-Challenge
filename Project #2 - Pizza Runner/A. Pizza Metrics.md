@@ -81,3 +81,28 @@ GROUP BY p.pizza_name;
 | Vegetarian | 3               |
 
 ***
+
+### Q5. How many Vegetarian and Meatlovers were ordered by each customer?
+
+````sql
+SELECT
+  customer_id,
+  SUM(CASE WHEN pizza_name = 'Meatlovers' THEN 1 ELSE 0 END) AS Meatlovers,
+  SUM(CASE WHEN pizza_name = 'Vegetarian' THEN 1 ELSE 0 END) AS Vegetarian
+FROM #customer_orders_temp c 
+JOIN pizza_names p
+  ON c.pizza_id = p.pizza_id
+GROUP BY customer_id
+````
+
+| customer_id | Meatlovers | Vegetarian  |
+| ----------- | ---------- | ----------- |
+| 101         | 2          | 1           |
+| 102         | 2          | 1           |
+| 103         | 3          | 1           |
+| 104         | 3          | 0           |
+| 105         | 0          | 1           |
+
+***
+
+### Q6. What was the maximum number of pizzas delivered in a single order?

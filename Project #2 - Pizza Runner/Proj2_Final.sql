@@ -99,3 +99,17 @@ JOIN #runner_orders_temp AS r
   ON c.order_id = r.order_id
 WHERE r.cancellation IS NULL
 GROUP BY p.pizza_name;
+
+--5.
+
+SELECT
+  customer_id,
+  SUM(CASE WHEN pizza_name = 'Meatlovers' THEN 1 ELSE 0 END) AS Meatlovers,
+  SUM(CASE WHEN pizza_name = 'Vegetarian' THEN 1 ELSE 0 END) AS Vegetarian
+FROM #customer_orders_temp c 
+JOIN pizza_names p
+  ON c.pizza_id = p.pizza_id
+GROUP BY customer_id
+
+--6.
+
