@@ -145,3 +145,18 @@ WHERE cancellation IS NULL;
 
 --9.
 
+SELECT 
+  DATEPART(HOUR, order_time) AS hour_of_day,
+  COUNT(*) AS pizza_volume
+FROM #customer_orders_temp
+GROUP BY DATEPART(HOUR, order_time)
+ORDER BY hour_of_day;
+
+--10.
+
+SELECT
+  DATENAME(WEEKDAY, order_time) AS day_of_week,
+  COUNT(*) AS daily_pizza_volume
+FROM #customer_orders_temp
+GROUP BY DATENAME(WEEKDAY, order_time), DATEPART(WEEKDAY, order_time);
+

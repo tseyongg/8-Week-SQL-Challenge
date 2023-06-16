@@ -168,5 +168,38 @@ WHERE cancellation IS NULL;
 ## Q9. What was the total volume of pizzas ordered for each hour of the day?
 
 ````sql
-
+SELECT 
+  DATEPART(HOUR, order_time) AS hour_of_day,
+  COUNT(*) AS pizza_volume
+FROM #customer_orders_temp
+GROUP BY DATEPART(HOUR, order_time)
+ORDER BY hour_of_day;
 ````
+
+| hour_of_day | pizza_volume  |
+| ----------- | ------------- |
+| 11          | 1             |
+| 13          | 3             |
+| 18          | 3             |
+| 19          | 1             |
+| 21          | 3             |
+| 23          | 3             |
+
+***
+
+## Q10. What was the volume of orders for each day of the week?
+
+````sql
+SELECT
+  DATENAME(WEEKDAY, order_time) AS day_of_week,
+  COUNT(*) AS daily_pizza_volume
+FROM #customer_orders_temp
+GROUP BY DATENAME(WEEKDAY, order_time), DATEPART(WEEKDAY, order_time);
+````
+
+| day_of_week | daily_pizza_volume |
+|-------------|--------------------|
+| Wednesday   | 5                  |
+| Thursday    | 3                  |
+| Friday      | 1                  |
+| Saturday    | 5                  |
