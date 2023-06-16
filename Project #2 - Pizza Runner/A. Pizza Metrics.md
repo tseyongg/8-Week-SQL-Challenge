@@ -136,7 +136,7 @@ FROM #customer_orders_temp c
 JOIN #runner_orders_temp r 
   ON c.order_id = r.order_id
 WHERE cancellation IS NULL
-GROUP BY customer_id
+GROUP BY customer_id;
 ````
 
 | customer_id | had_changes | no_changes |
@@ -150,6 +150,22 @@ GROUP BY customer_id
 ***
 
 ## Q8. How many pizzas were delivered that had both exclusions and extras?
+
+````sql
+SELECT SUM(CASE WHEN exclusions != '' AND extras != '' THEN 1 ELSE 0 END) AS had_both_changes
+FROM #customer_orders_temp c
+JOIN #runner_orders_temp r 
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL;
+````
+
+| had_both_changes |
+| ---------------- |
+| 1                |
+
+***
+
+## Q9. What was the total volume of pizzas ordered for each hour of the day?
 
 ````sql
 

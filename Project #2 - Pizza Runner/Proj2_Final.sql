@@ -133,6 +133,15 @@ FROM #customer_orders_temp c
 JOIN #runner_orders_temp r 
   ON c.order_id = r.order_id
 WHERE cancellation IS NULL
-GROUP BY customer_id
+GROUP BY customer_id;
 
 --8.
+
+SELECT SUM(CASE WHEN exclusions != '' AND extras != '' THEN 1 ELSE 0 END) AS had_both_changes
+FROM #customer_orders_temp c
+JOIN #runner_orders_temp r 
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL;
+
+--9.
+
