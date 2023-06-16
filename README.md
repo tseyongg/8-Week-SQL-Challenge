@@ -6,7 +6,7 @@ Credit to [Data With Danny](https://www.linkedin.com/company/datawithdanny/) for
 
 Note:
 
-- Solutions are coded on **VSCode**, **Microsoft SSMS**
+- Solutions are coded in **VSCode**, **Microsoft SSMS**
 
 ## :memo: Table of Contents
 
