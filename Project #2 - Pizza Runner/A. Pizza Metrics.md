@@ -49,7 +49,7 @@ SELECT
   COUNT(order_id) AS successful_orders_count
 FROM #runner_orders_temp
 WHERE cancellation IS NULL
-GROUP BY runner_id
+GROUP BY runner_id;
 ````
 
 | runner_id | successful_orders_count  |
@@ -92,7 +92,7 @@ SELECT
 FROM #customer_orders_temp c 
 JOIN pizza_names p
   ON c.pizza_id = p.pizza_id
-GROUP BY customer_id
+GROUP BY customer_id;
 ````
 
 | customer_id | Meatlovers | Vegetarian  |
@@ -106,3 +106,23 @@ GROUP BY customer_id
 ***
 
 ### Q6. What was the maximum number of pizzas delivered in a single order?
+
+````sql
+SELECT TOP 1
+  c.order_id,
+  COUNT(*) AS pizza_count
+FROM #customer_orders_temp AS c
+JOIN #runner_orders_temp AS r 
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL
+GROUP BY c.order_id
+ORDER BY pizza_count DESC;
+````
+
+| order_id | pizza_count |
+| -------- | ----------- |
+| 4        | 3           |
+
+***
+
+## Q7. For each customer, how many delivered pizzas had at least 1 change and how many had no changes?

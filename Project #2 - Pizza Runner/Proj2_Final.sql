@@ -109,7 +109,18 @@ SELECT
 FROM #customer_orders_temp c 
 JOIN pizza_names p
   ON c.pizza_id = p.pizza_id
-GROUP BY customer_id
+GROUP BY customer_id;
 
 --6.
 
+SELECT TOP 1
+  c.order_id,
+  COUNT(*) AS pizza_count
+FROM #customer_orders_temp AS c
+JOIN #runner_orders_temp AS r 
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL
+GROUP BY c.order_id
+ORDER BY pizza_count DESC;
+
+--7.
