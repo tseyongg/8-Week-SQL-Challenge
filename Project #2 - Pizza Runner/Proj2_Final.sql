@@ -160,3 +160,16 @@ SELECT
 FROM #customer_orders_temp
 GROUP BY DATENAME(WEEKDAY, order_time), DATEPART(WEEKDAY, order_time);
 
+
+-- B. Runner and Customer Experience
+
+--1. 
+
+SELECT
+  DATEPART(WEEK, registration_date) AS registration_week,
+  COUNT(*) AS runner_signup
+FROM runners
+GROUP BY DATEPART(WEEK, registration_date)
+
+--2.
+
