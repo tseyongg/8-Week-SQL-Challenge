@@ -203,3 +203,7 @@ GROUP BY DATENAME(WEEKDAY, order_time), DATEPART(WEEKDAY, order_time);
 | Thursday    | 3                  |
 | Friday      | 1                  |
 | Saturday    | 5                  |
+
+***
+
+Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md) to view my solutions to the next portion, **B. Runner and Customer Experience!**
