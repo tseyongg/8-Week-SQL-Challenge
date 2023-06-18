@@ -169,7 +169,7 @@ SELECT
   DATEPART(WEEK, registration_date) AS registration_week,
   COUNT(*) AS runner_signup
 FROM runners
-GROUP BY DATEPART(WEEK, registration_date)
+GROUP BY DATEPART(WEEK, registration_date);
 
 --2.
 
