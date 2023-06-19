@@ -131,8 +131,12 @@ GROUP BY customer_id
 ### Q5. What was the difference between the longest and shortest delivery times for all orders?
 
 ````sql
-
+SELECT MAX(duration) - MIN(duration) AS time_diff
+FROM #runner_orders_temp;
 ````
+|time_diff|
+| ------- |
+| 30      |
 
 ***
 

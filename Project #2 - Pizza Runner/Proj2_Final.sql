@@ -236,3 +236,7 @@ FROM travels
 GROUP BY customer_id;
 
 --5.
+SELECT MAX(duration) - MIN(duration) AS time_diff
+FROM #runner_orders_temp;
+
+--6.
