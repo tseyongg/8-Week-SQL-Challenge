@@ -172,4 +172,24 @@ FROM runners
 GROUP BY DATEPART(WEEK, registration_date);
 
 --2.
+WITH runners_pickup AS (
+  SELECT
+    r.runner_id,
+    c.order_id, 
+    c.order_time, 
+    r.pickup_time, 
+    DATEDIFF(MINUTE, c.order_time, r.pickup_time) AS pickup_minutes
+  FROM #customer_orders_temp c 
+  JOIN #runner_orders_temp r 
+    ON c.order_id = r.order_id 
+  WHERE r.cancellation IS NULL
+  GROUP BY r.runner_id, c.order_id, c.order_time, r.pickup_time
+)
 
+SELECT 
+runner_id,
+AVG(pickup_minutes) AS average_time
+FROM runners_pickup
+GROUP BY runner_id;
+
+--3.
