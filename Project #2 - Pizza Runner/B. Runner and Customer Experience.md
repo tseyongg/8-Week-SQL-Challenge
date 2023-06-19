@@ -65,8 +65,35 @@ GROUP BY runner_id;
 ### Q3. Is there any relationship between the number of pizzas and how long the order takes to prepare?
 
 ````sql
+WITH pizza_prep AS (
+  SELECT
+    r.runner_id,
+    c.order_id, 
+    c.order_time, 
+    r.pickup_time, 
+    DATEDIFF(MINUTE, c.order_time, r.pickup_time) AS prep_time,
+    COUNT(pizza_id) AS pizza_count
+  FROM #customer_orders_temp c 
+  JOIN #runner_orders_temp r 
+    ON c.order_id = r.order_id 
+  WHERE r.cancellation IS NULL
+  GROUP BY r.runner_id, c.order_id, c.order_time, r.pickup_time
+)
 
+SELECT 
+pizza_count,
+AVG(prep_time) AS avg_prep_time
+FROM pizza_prep
+GROUP BY pizza_count
 ````
+
+| pizza_count | avg_prep_time  |
+| ----------- | -------------- |
+| 1           | 12             |
+| 2           | 18             |
+| 3           | 30             |
+
+- With more pizzas, preparation time increased.
 
 ***
 
