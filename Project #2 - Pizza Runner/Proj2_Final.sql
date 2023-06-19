@@ -215,3 +215,21 @@ FROM pizza_prep
 GROUP BY pizza_count;
 
 --4. 
+WITH travels AS (
+  SELECT
+    customer_id,
+    c.order_id,
+    distance
+  FROM #customer_orders_temp c 
+  JOIN #runner_orders_temp r 
+    ON c.order_id = r.order_id 
+  WHERE r.cancellation IS NULL
+  GROUP BY customer_id, c.order_id, distance)
+
+SELECT 
+  customer_id,
+  AVG(distance) AS avg_dist
+FROM travels
+GROUP BY customer_id
+
+--5.

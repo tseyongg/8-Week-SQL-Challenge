@@ -100,8 +100,31 @@ GROUP BY pizza_count;
 ### Q4. What was the average distance travelled for each customer?
 
 ````sql
+WITH travels AS (
+  SELECT
+    customer_id,
+    c.order_id,
+    distance
+  FROM #customer_orders_temp c 
+  JOIN #runner_orders_temp r 
+    ON c.order_id = r.order_id 
+  WHERE r.cancellation IS NULL
+  GROUP BY customer_id, c.order_id, distance)
 
+SELECT 
+  customer_id,
+  AVG(distance) AS avg_dist
+FROM travels
+GROUP BY customer_id
 ````
+
+| customer_id | avg_dist |
+| ----------- | -------- |
+| 101         | 20       |
+| 102         | 18.4     |
+| 103         | 23.4     |
+| 104         | 10       |
+| 105         | 25       |
 
 ***
 
