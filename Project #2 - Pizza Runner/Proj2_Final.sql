@@ -212,4 +212,6 @@ SELECT
 pizza_count,
 AVG(prep_time) AS avg_prep_time
 FROM pizza_prep
-GROUP BY pizza_count
+GROUP BY pizza_count;
+
+--4. 
