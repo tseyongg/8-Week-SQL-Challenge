@@ -172,6 +172,7 @@ FROM runners
 GROUP BY DATEPART(WEEK, registration_date);
 
 --2.
+
 WITH runners_pickup AS (
   SELECT
     r.runner_id,
@@ -193,6 +194,7 @@ FROM runners_pickup
 GROUP BY runner_id;
 
 --3.
+
 WITH pizza_prep AS (
   SELECT
     r.runner_id,
@@ -215,6 +217,7 @@ FROM pizza_prep
 GROUP BY pizza_count;
 
 --4. 
+
 WITH travels AS (
   SELECT
     customer_id,
@@ -230,6 +233,6 @@ SELECT
   customer_id,
   AVG(distance) AS avg_dist
 FROM travels
-GROUP BY customer_id
+GROUP BY customer_id;
 
 --5.
