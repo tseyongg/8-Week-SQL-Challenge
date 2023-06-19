@@ -236,7 +236,30 @@ FROM travels
 GROUP BY customer_id;
 
 --5.
+
 SELECT MAX(duration) - MIN(duration) AS time_diff
 FROM #runner_orders_temp;
 
 --6.
+
+SELECT 
+  r.runner_id,
+  r.order_id,
+  r.distance,
+  r.duration AS duration_min,
+  ROUND(AVG((r.distance / r.duration) * 60), 1) AS avg_speed
+FROM #runner_orders_temp r
+JOIN #customer_orders_temp c
+  ON r.order_id = c.order_id
+WHERE r.cancellation IS NULL
+GROUP BY r.runner_id, r.order_id, r.distance, r.duration;
+
+--7.
+
+SELECT
+  runner_id,
+  COUNT(order_id) AS orders,
+  COUNT(distance) AS fufilled,
+  100 * COUNT(distance) / COUNT(order_id) AS delivered_percentage
+FROM #runner_orders_temp
+GROUP BY runner_id;
