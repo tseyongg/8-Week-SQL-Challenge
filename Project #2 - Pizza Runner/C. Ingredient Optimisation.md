@@ -18,7 +18,7 @@
 
 ### Data Cleaning
 
-a. Create temp table `newtoppingss`, splitting the `toppings` column from `pizza_recipes` table
+a. Create temp table `newtoppings`, splitting the `toppings` column from `pizza_recipes` table
 
 ````sql
 SELECT 
