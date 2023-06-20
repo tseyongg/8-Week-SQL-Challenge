@@ -18,7 +18,7 @@
 
 ### Data Cleaning
 
-- Create temp table `newtoppingss`, splitting the `toppings` column from `pizza_recipes` table
+a. Create temp table `newtoppingss`, splitting the `toppings` column from `pizza_recipes` table
 
 ````sql
 SELECT 
@@ -51,5 +51,103 @@ FROM #newtoppings
 | 2        | 9          | Peppers      |
 | 2        | 11         | Tomatoes     |
 | 2        | 12         | Tomato Sauce |
+
+***
+
+b. Add an identity column `record_id` to the `#customer_orders_temp` table 
+
+````sql
+ALTER TABLE #customer_orders_temp
+ADD record_id INT IDENTITY(1,1);
+
+SELECT *
+FROM #customer_orders_temp;
+````
+  
+| order_id | customer_id | pizza_id | exclusions | extras | order_time              | record_id  |
+| -------- | ----------- | -------- | ---------- | ------ | ----------------------- | ---------- |
+| 1        | 101         | 1        |            |        | 2020-01-01 18:05:02.000 | 1          |
+| 2        | 101         | 1        |            |        | 2020-01-01 19:00:52.000 | 2          |
+| 3        | 102         | 1        |            |        | 2020-01-02 23:51:23.000 | 3          |
+| 3        | 102         | 2        |            |        | 2020-01-02 23:51:23.000 | 4          |
+| 4        | 103         | 1        | 4          |        | 2020-01-04 13:23:46.000 | 5          |
+| 4        | 103         | 1        | 4          |        | 2020-01-04 13:23:46.000 | 6          |
+| 4        | 103         | 2        | 4          |        | 2020-01-04 13:23:46.000 | 7          |
+| 5        | 104         | 1        |            | 1      | 2020-01-08 21:00:29.000 | 8          |
+| 6        | 101         | 2        |            |        | 2020-01-08 21:03:13.000 | 9          |
+| 7        | 105         | 2        |            | 1      | 2020-01-08 21:20:29.000 | 10         |
+| 8        | 102         | 1        |            |        | 2020-01-09 23:54:33.000 | 11         |
+| 9        | 103         | 1        | 4          | 1, 5   | 2020-01-10 11:22:59.000 | 12         |
+| 10       | 104         | 1        |            |        | 2020-01-11 18:34:49.000 | 13         |
+| 10       | 104         | 1        | 2, 6       | 1, 4   | 2020-01-11 18:34:49.000 | 14         |
+
+***
+
+c. Create a new temp table `newexclusions` which separates `exclusions` into multiple rows
+
+````sql
+SELECT 
+  c.record_id,
+  TRIM(e.value) AS exclusion_id
+INTO #newexclusions 
+FROM #customer_orders_temp c
+  CROSS APPLY STRING_SPLIT(exclusions, ',') AS e;
+
+SELECT *
+FROM #newexclusions;
+````
+
+| record_id | exclusion_id  |
+| --------- | ------------- |
+| 1         |               |
+| 2         |               |
+| 3         |               |
+| 4         |               |
+| 5         | 4             |
+| 6         | 4             |
+| 7         | 4             |
+| 8         |               |
+| 9         |               |
+| 10        |               |
+| 11        |               |
+| 12        | 4             |
+| 13        |               |
+| 14        | 2             |
+| 14        | 6             |
+
+*** 
+
+d.  Create a new temp table `newextras` which separates `extras` into multiple rows
+
+````sql
+SELECT 
+  c.record_id,
+  TRIM(e.value) AS extra_id
+INTO #newextras 
+FROM #customer_orders_temp c
+  CROSS APPLY STRING_SPLIT(extras, ',') AS e;
+
+SELECT *
+FROM #newextras;
+````
+
+| record_id | extra_id  |
+|-----------|-----------|
+| 1         |           |
+| 2         |           |
+| 3         |           |
+| 4         |           |
+| 5         |           |
+| 6         |           |
+| 7         |           |
+| 8         | 1         |
+| 9         |           |
+| 10        | 1         |
+| 11        |           |
+| 12        | 1         |
+| 12        | 5         |
+| 13        |           |
+| 14        | 1         |
+| 14        | 4         |
 
 ***

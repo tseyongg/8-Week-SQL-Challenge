@@ -269,6 +269,8 @@ GROUP BY runner_id;
 
 -- Data Cleaning
 
+--a.
+
 SELECT 
   pr.pizza_id,
   TRIM(t.value) AS topping_id,
@@ -281,3 +283,35 @@ JOIN pizza_toppings pt
 
 SELECT *
 FROM #newtoppings;
+
+--b.
+
+ALTER TABLE #customer_orders_temp
+ADD record_id INT IDENTITY(1,1);
+
+SELECT *
+FROM #customer_orders_temp;
+
+--c.
+
+SELECT 
+  c.record_id,
+  TRIM(e.value) AS exclusion_id
+INTO #newexclusions 
+FROM #customer_orders_temp c
+  CROSS APPLY STRING_SPLIT(exclusions, ',') AS e;
+
+SELECT *
+FROM #newexclusions;
+
+--d.
+
+SELECT 
+  c.record_id,
+  TRIM(e.value) AS extra_id
+INTO #newextras 
+FROM #customer_orders_temp c
+  CROSS APPLY STRING_SPLIT(extras, ',') AS e;
+
+SELECT *
+FROM #newextras;
