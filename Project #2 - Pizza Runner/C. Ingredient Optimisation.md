@@ -151,3 +151,48 @@ FROM #newextras;
 | 14        | 4         |
 
 ***
+
+### Q1. What are the standard ingredients for each pizza?
+
+````sql
+SELECT 
+  p.pizza_name,
+  STRING_AGG(topping_name, ', ') AS ingredients
+FROM #newtoppings t
+JOIN pizza_names p 
+  ON t.pizza_id = p.pizza_id
+GROUP BY p.pizza_name;
+````
+
+| pizza_name | ingredients                                                            |
+| ---------- | ---------------------------------------------------------------------- |
+| Meatlovers | Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami  |
+| Vegetarian | Cheese, Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce             |
+
+***
+
+### Q2. What was the most commonly added extra?
+
+````sql
+SELECT
+  topping_name,
+  COUNT(*) AS frequency
+FROM #newextras e
+JOIN pizza_toppings pt 
+  ON e.extra_id = pt.topping_id
+GROUP BY topping_name
+````
+
+| topping_name | frequency |
+| ------------ | --------- |
+| Bacon        | 4         |
+| Cheese       | 1         |
+| Chicken      | 1         |
+
+***
+
+### Q3. What was the most common exclusion?
+
+````sql
+
+````

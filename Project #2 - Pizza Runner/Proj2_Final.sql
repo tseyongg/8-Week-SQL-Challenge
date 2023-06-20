@@ -315,3 +315,26 @@ FROM #customer_orders_temp c
 
 SELECT *
 FROM #newextras;
+
+--1.
+
+SELECT 
+  p.pizza_name,
+  STRING_AGG(topping_name, ', ') AS ingredients
+FROM #newtoppings t
+JOIN pizza_names p 
+  ON t.pizza_id = p.pizza_id
+GROUP BY p.pizza_name;
+
+--2.
+
+SELECT
+  topping_name,
+  COUNT(*) AS frequency
+FROM #newextras e
+JOIN pizza_toppings pt 
+  ON e.extra_id = pt.topping_id
+GROUP BY topping_name
+
+--3.
+
