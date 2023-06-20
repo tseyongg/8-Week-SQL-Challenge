@@ -334,7 +334,7 @@ SELECT
 FROM #newextras e
 JOIN pizza_toppings pt 
   ON e.extra_id = pt.topping_id
-GROUP BY topping_name
+GROUP BY topping_name;
 
 --3.
 
