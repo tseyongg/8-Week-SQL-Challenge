@@ -280,4 +280,4 @@ JOIN pizza_toppings pt
   ON TRIM(t.value) = pt.topping_id;
 
 SELECT *
-FROM #newtoppings
+FROM #newtoppings;
