@@ -263,3 +263,21 @@ SELECT
   100 * COUNT(distance) / COUNT(order_id) AS delivered_percentage
 FROM #runner_orders_temp
 GROUP BY runner_id;
+
+
+-- C. Ingredient Optimisation
+
+-- Data Cleaning
+
+SELECT 
+  pr.pizza_id,
+  TRIM(t.value) AS topping_id,
+  pt.topping_name
+INTO #newtoppings
+FROM pizza_recipes pr 
+  CROSS APPLY STRING_SPLIT(toppings, ',') AS t 
+JOIN pizza_toppings pt 
+  ON TRIM(t.value) = pt.topping_id;
+
+SELECT *
+FROM #newtoppings
