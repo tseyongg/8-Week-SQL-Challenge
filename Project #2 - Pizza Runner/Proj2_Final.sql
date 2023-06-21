@@ -338,3 +338,14 @@ GROUP BY topping_name;
 
 --3.
 
+SELECT 
+  topping_name,
+  COUNT(*) AS frequency
+FROM #newexclusions e 
+JOIN pizza_toppings pt 
+  ON e.exclusion_id = pt.topping_id
+GROUP BY topping_name
+ORDER BY frequency DESC
+
+--4.
+

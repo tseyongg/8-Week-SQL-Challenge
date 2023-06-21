@@ -189,10 +189,35 @@ GROUP BY topping_name;
 | Cheese       | 1         |
 | Chicken      | 1         |
 
+The most commonly added extra was Bacon.
+
 ***
 
 ### Q3. What was the most common exclusion?
 
 ````sql
-
+SELECT 
+  topping_name,
+  COUNT(*) AS frequency
+FROM #newexclusions e 
+JOIN pizza_toppings pt 
+  ON e.exclusion_id = pt.topping_id
+GROUP BY topping_name
+ORDER BY frequency DESC
 ````
+
+| topping_name | frequency |
+| ------------ | --------- |
+| Cheese       | 4         |
+| Mushrooms    | 1         |
+| BBQ Sauce    | 1         |
+
+The most common exclusion was Cheese.
+
+***
+
+### Q4. Generate an order item for each record in the `customers_orders` table in the format of one of the following:
+- `Meat Lovers`
+- `Meat Lovers - Exclude Beef`
+- `Meat Lovers - Extra Bacon`
+- `Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers`
