@@ -393,6 +393,53 @@ GROUP BY
   c.order_time,
   p.pizza_name;
 
-  --5.
+--5.
 
-  
+WITH ingredients AS (
+  SELECT 
+    c.*,
+    p.pizza_name,
+
+    -- Add '2x' in front of topping_names if their topping_id appear in the #extrasBreak table
+    CASE WHEN t.topping_id IN (
+          SELECT extra_id 
+          FROM #newextras e 
+          WHERE e.record_id = c.record_id)
+      THEN '2x ' + t.topping_name
+      ELSE t.topping_name
+    END AS topping
+
+  FROM #customer_orders_temp c
+  JOIN #newtoppings t
+    ON t.pizza_id = c.pizza_id
+  JOIN pizza_names p
+    ON p.pizza_id = c.pizza_id
+
+  -- Exclude toppings if their topping_id appear in the #exclusionBreak table
+  WHERE t.topping_id NOT IN (
+      SELECT exclusion_id 
+      FROM #newexclusions e 
+      WHERE c.record_id = e.record_id)
+)
+
+SELECT 
+  record_id,
+  order_id,
+  customer_id,
+  pizza_id,
+  order_time,
+  CONCAT(pizza_name + ': ', STRING_AGG(topping, ', ')) AS ingredients_list
+FROM ingredients
+GROUP BY 
+  record_id, 
+  record_id,
+  order_id,
+  customer_id,
+  pizza_id,
+  order_time,
+  pizza_name
+ORDER BY record_id;
+
+--6.
+
+ 
