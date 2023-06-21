@@ -203,7 +203,7 @@ FROM #newexclusions e
 JOIN pizza_toppings pt 
   ON e.exclusion_id = pt.topping_id
 GROUP BY topping_name
-ORDER BY frequency DESC
+ORDER BY frequency DESC;
 ````
 
 | topping_name | frequency |
