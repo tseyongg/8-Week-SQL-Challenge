@@ -226,7 +226,7 @@ To solve this question:
 
 * I created 3 CTEs: `extras_cte`, `exclusions_cte`, and then combining them into `union_cte`
 * I LEFT JOINED `union_cte` with `#customer_orders_temp`, then JOINED with `pizza_names`
-* Then used `CONCAT_WS` with `STRING_AGG` to get the result
+* Then I used `CONCAT_WS` with `STRING_AGG` to obtain the result
 
 ````sql
 WITH extras_cte AS (
