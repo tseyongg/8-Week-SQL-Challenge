@@ -349,3 +349,50 @@ ORDER BY frequency DESC;
 
 --4.
 
+WITH extras_cte AS (
+  SELECT 
+    e.record_id,
+    'Extra ' + STRING_AGG(t.topping_name, ', ') AS comments
+  FROM #newextras e
+  JOIN pizza_toppings t
+    ON e.extra_id = t.topping_id
+  GROUP BY e.record_id
+),
+exclusions_cte AS (
+  SELECT 
+    e.record_id,
+    'Exclude ' + STRING_AGG(t.topping_name, ', ') AS comments
+  FROM #newexclusions e
+  JOIN pizza_toppings t
+    ON e.exclusion_id = t.topping_id
+  GROUP BY e.record_id
+),
+union_cte AS (
+  SELECT * FROM extras_cte
+  UNION
+  SELECT * FROM exclusions_cte
+)
+
+SELECT
+  c.record_id,
+  c.order_id,
+  c.customer_id,
+  c.pizza_id,
+  c.order_time,
+  CONCAT_WS(' - ', p.pizza_name, STRING_AGG(u.comments, ' - ')) AS pizza_info
+FROM #customer_orders_temp c 
+LEFT JOIN union_cte u 
+  ON c.record_id = u.record_id
+JOIN pizza_names p
+  ON c.pizza_id = p.pizza_id
+GROUP BY 
+  c.record_id,
+  c.order_id,
+  c.customer_id,
+  c.pizza_id,
+  c.order_time,
+  p.pizza_name;
+
+  --5.
+
+  

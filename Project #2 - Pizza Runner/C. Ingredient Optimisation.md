@@ -221,3 +221,110 @@ The most common exclusion was Cheese.
 - `Meat Lovers - Exclude Beef`
 - `Meat Lovers - Extra Bacon`
 - `Meat Lovers - Exclude Cheese, Bacon - Extra Mushroom, Peppers`
+
+To solve this question: 
+
+* I created 3 CTEs: `extras_cte`, `exclusions_cte`, and then combining them into `union_cte`
+* I LEFT JOINED `union_cte` with `#customer_orders_temp`, then JOINED with `pizza_names`
+* Then used `CONCAT_WS` with `STRING_AGG` to get the result
+
+````sql
+WITH extras_cte AS (
+  SELECT 
+    e.record_id,
+    'Extra ' + STRING_AGG(t.topping_name, ', ') AS comments
+  FROM #newextras e
+  JOIN pizza_toppings t
+    ON e.extra_id = t.topping_id
+  GROUP BY e.record_id
+),
+exclusions_cte AS (
+  SELECT 
+    e.record_id,
+    'Exclude ' + STRING_AGG(t.topping_name, ', ') AS comments
+  FROM #newexclusions e
+  JOIN pizza_toppings t
+    ON e.exclusion_id = t.topping_id
+  GROUP BY e.record_id
+),
+union_cte AS (
+  SELECT * FROM extras_cte
+  UNION
+  SELECT * FROM exclusions_cte
+)
+
+SELECT
+  c.record_id,
+  c.order_id,
+  c.customer_id,
+  c.pizza_id,
+  c.order_time,
+  CONCAT_WS(' - ', p.pizza_name, STRING_AGG(u.comments, ' - ')) AS pizza_info
+FROM #customer_orders_temp c 
+LEFT JOIN union_cte u 
+  ON c.record_id = u.record_id
+JOIN pizza_names p
+  ON c.pizza_id = p.pizza_id
+GROUP BY 
+  c.record_id,
+  c.order_id,
+  c.customer_id,
+  c.pizza_id,
+  c.order_time,
+  p.pizza_name;
+````
+**Table `extras_cte`**
+
+| record_id | comments              |
+| --------- | --------------------- |
+| 8         | Extra Bacon           |
+| 10        | Extra Bacon           |
+| 12        | Extra Bacon, Chicken  |
+| 14        | Extra Bacon, Cheese   |
+
+**Table `exclusions_cte`**
+
+| record_id | comments                       |
+| --------- | ------------------------------ |
+| 5         | Exclude Cheese                 |
+| 6         | Exclude Cheese                 |
+| 7         | Exclude Cheese                 |
+| 12        | Exclude Cheese                 |
+| 14        | Exclude BBQ Sauce, Mushrooms   |
+
+**Table `unioncte`**
+| record_id | comments                        |
+| --------- | ------------------------------- |
+| 5         | Exclude Cheese                  |
+| 6         | Exclude Cheese                  |
+| 7         | Exclude Cheese                  |
+| 8         | Extra Bacon                     |
+| 10        | Extra Bacon                     |
+| 12        | Exclude Cheese                  |
+| 12        | Extra Bacon, Chicken            |
+| 14        | Exclude BBQ Sauce, Mushrooms    |
+| 14        | Extra Bacon, Cheese             |
+
+**Result**
+  
+| record_id | order_id | customer_id | pizza_id | order_time              | pizza_info                                                        |
+| --------- | -------- | ----------- | -------- | ----------------------- | ----------------------------------------------------------------- |
+| 1         | 1        | 101         | 1        | 2020-01-01 18:05:02.000 | Meatlovers                                                        |
+| 2         | 2        | 101         | 1        | 2020-01-01 19:00:52.000 | Meatlovers                                                        |
+| 3         | 3        | 102         | 1        | 2020-01-02 23:51:23.000 | Meatlovers                                                        |
+| 4         | 3        | 102         | 2        | 2020-01-02 23:51:23.000 | Vegetarian                                                        |
+| 5         | 4        | 103         | 1        | 2020-01-04 13:23:46.000 | Meatlovers - Exclude Cheese                                       |
+| 6         | 4        | 103         | 1        | 2020-01-04 13:23:46.000 | Meatlovers - Exclude Cheese                                       |
+| 7         | 4        | 103         | 2        | 2020-01-04 13:23:46.000 | Vegetarian - Exclude Cheese                                       |
+| 8         | 5        | 104         | 1        | 2020-01-08 21:00:29.000 | Meatlovers - Extra Bacon                                          |
+| 9         | 6        | 101         | 2        | 2020-01-08 21:03:13.000 | Vegetarian                                                        |
+| 10        | 7        | 105         | 2        | 2020-01-08 21:20:29.000 | Vegetarian - Extra Bacon                                          |
+| 11        | 8        | 102         | 1        | 2020-01-09 23:54:33.000 | Meatlovers                                                        |
+| 12        | 9        | 103         | 1        | 2020-01-10 11:22:59.000 | Meatlovers - Exclude Cheese - Extra Bacon, Chicken                |
+| 13        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers                                                        |
+| 14        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers - Exclude BBQ Sauce, Mushrooms - Extra Bacon, Cheese   |
+
+***
+
+### Q5. Generate an alphabetically ordered comma separated ingredient list for each pizza order from the `customer_orders` table and add a `2x` in front of any relevant ingredients
+- For example: `"Meat Lovers: 2xBacon, Beef, ... , Salami"`
