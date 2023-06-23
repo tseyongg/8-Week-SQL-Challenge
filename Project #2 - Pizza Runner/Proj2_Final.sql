@@ -400,7 +400,7 @@ WITH ingredients AS (
     c.*,
     p.pizza_name,
 
-    -- Add '2x' in front of topping_names if their topping_id appear in the #extrasBreak table
+    -- Add '2x' in front of topping_names if topping_id appears in the #extrasBreak table
     CASE WHEN t.topping_id IN (
           SELECT extra_id 
           FROM #newextras e 
@@ -415,7 +415,7 @@ WITH ingredients AS (
   JOIN pizza_names p
     ON p.pizza_id = c.pizza_id
 
-  -- Exclude toppings if their topping_id appear in the #exclusionBreak table
+  -- Exclude toppings if topping_id appears in the #exclusionBreak table
   WHERE t.topping_id NOT IN (
       SELECT exclusion_id 
       FROM #newexclusions e 
