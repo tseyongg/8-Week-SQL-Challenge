@@ -18,7 +18,7 @@
 
 ### Data Cleaning
 
-a. Create temp table `newtoppings`, splitting the `toppings` column from `pizza_recipes` table
+**a. Create temp table `newtoppings`, splitting the `toppings` column from `pizza_recipes` table**
 
 ````sql
 SELECT 
@@ -54,7 +54,7 @@ FROM #newtoppings
 
 ***
 
-b. Add an identity column `record_id` to the `#customer_orders_temp` table 
+**b. Add an identity column `record_id` to the `#customer_orders_temp` table**
 
 ````sql
 ALTER TABLE #customer_orders_temp
@@ -83,7 +83,7 @@ FROM #customer_orders_temp;
 
 ***
 
-c. Create a new temp table `newexclusions` which separates `exclusions` into multiple rows
+**c. Create a new temp table `newexclusions` which separates `exclusions` into multiple rows**
 
 ````sql
 SELECT 
@@ -117,7 +117,7 @@ FROM #newexclusions;
 
 *** 
 
-d.  Create a new temp table `newextras` which separates `extras` into multiple rows
+**d.  Create a new temp table `newextras` which separates `extras` into multiple rows**
 
 ````sql
 SELECT 
