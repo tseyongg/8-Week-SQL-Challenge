@@ -190,3 +190,7 @@ GROUP BY runner_id;
 | 1         | 4      | 4        | 100                   |
 | 2         | 4      | 3        | 75                    |
 | 3         | 2      | 1        | 50                    |
+
+***
+
+Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md) to view my solutions to the next portion, **C. Ingredient Optimisation**

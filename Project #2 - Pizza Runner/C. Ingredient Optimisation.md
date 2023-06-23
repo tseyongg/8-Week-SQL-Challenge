@@ -394,6 +394,8 @@ ORDER BY record_id;
 | 13        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
 | 14        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: 2x Bacon, Beef, 2x Cheese, Chicken, Pepperoni, Salami                    |
 
+***
+
 ### Q6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
 
 To solve this question:
@@ -454,3 +456,7 @@ ORDER BY times_used DESC;
 | Onions       | 3           |
 | Tomato Sauce | 3           |
 | Tomatoes     | 3           |
+
+***
+
+Click [here]() to view my solutions to the next portion, **D.**
