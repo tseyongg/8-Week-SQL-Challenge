@@ -393,3 +393,64 @@ ORDER BY record_id;
 | 12        | 9        | 103         | 1        | 2020-01-10 11:22:59.000 | Meatlovers: 2x Bacon, BBQ Sauce, Beef, 2x Chicken, Mushrooms, Pepperoni, Salami      |
 | 13        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
 | 14        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: 2x Bacon, Beef, 2x Cheese, Chicken, Pepperoni, Salami                    |
+
+### Q6. What is the total quantity of each ingredient used in all delivered pizzas sorted by most frequent first?
+
+To solve this question:
+- Create a CTE to record the number of times each ingredient was used
+  - if extra ingredient, add 2 
+  - if excluded ingredient, add 0
+  - no extras or no exclusions, add 1
+- Also filter out non-delivered items, i.e. cancellaton IS NULL
+
+````sql
+WITH freq_ingredients AS (
+  SELECT
+  c.record_id,
+  t.topping_name,
+    CASE
+      -- if extra ingredient, add 2
+      WHEN t.topping_id IN (
+          SELECT extra_id 
+          FROM #newextras e
+          WHERE e.record_id = c.record_id) 
+      THEN 2
+      -- if excluded ingredient, add 0
+      WHEN t.topping_id IN (
+          SELECT exclusion_id 
+          FROM #newexclusions e 
+          WHERE c.record_id = e.record_id)
+      THEN 0
+      -- no extras, no exclusions, add 1
+      ELSE 1
+    END AS times_used  
+  FROM #customer_orders_temp c 
+  JOIN #newtoppings t
+    ON c.pizza_id = t.pizza_id
+  JOIN #runner_orders_temp r 
+    ON c.order_id = r.order_id
+  WHERE r.cancellation IS NULL
+)
+
+SELECT 
+  topping_name,
+  SUM(times_used) AS times_used 
+FROM freq_ingredients
+GROUP BY topping_name
+ORDER BY times_used DESC;
+````
+
+| topping_name | times_used  |
+| ------------ | ----------- |
+| Bacon        | 11          |
+| Mushrooms    | 11          |
+| Cheese       | 10          |
+| Chicken      | 9           |
+| Pepperoni    | 9           |
+| Salami       | 9           |
+| Beef         | 9           |
+| BBQ Sauce    | 8           |
+| Peppers      | 3           |
+| Onions       | 3           |
+| Tomato Sauce | 3           |
+| Tomatoes     | 3           |
