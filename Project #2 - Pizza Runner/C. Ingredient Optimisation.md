@@ -376,3 +376,20 @@ GROUP BY
 ORDER BY record_id;
 ````
 
+ 
+| record_id | order_id | customer_id | pizza_id | order_time              | ingredients_list                                                                     |
+| --------- | -------- | ----------- | -------- | ----------------------- | ------------------------------------------------------------------------------------ |
+| 1         | 1        | 101         | 1        | 2020-01-01 18:05:02.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
+| 2         | 2        | 101         | 1        | 2020-01-01 19:00:52.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
+| 3         | 3        | 102         | 1        | 2020-01-02 23:51:23.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
+| 4         | 3        | 102         | 2        | 2020-01-02 23:51:23.000 | Vegetarian: Cheese, Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce               |
+| 5         | 4        | 103         | 1        | 2020-01-04 13:23:46.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Chicken, Mushrooms, Pepperoni, Salami            |
+| 6         | 4        | 103         | 1        | 2020-01-04 13:23:46.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Chicken, Mushrooms, Pepperoni, Salami            |
+| 7         | 4        | 103         | 2        | 2020-01-04 13:23:46.000 | Vegetarian: Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce                       |
+| 8         | 5        | 104         | 1        | 2020-01-08 21:00:29.000 | Meatlovers: 2x Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni,Salami  |
+| 9         | 6        | 101         | 2        | 2020-01-08 21:03:13.000 | Vegetarian: Cheese, Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce               |
+| 10        | 7        | 105         | 2        | 2020-01-08 21:20:29.000 | Vegetarian: Cheese, Mushrooms, Onions, Peppers, Tomatoes, Tomato Sauce               |
+| 11        | 8        | 102         | 1        | 2020-01-09 23:54:33.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
+| 12        | 9        | 103         | 1        | 2020-01-10 11:22:59.000 | Meatlovers: 2x Bacon, BBQ Sauce, Beef, 2x Chicken, Mushrooms, Pepperoni, Salami      |
+| 13        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: Bacon, BBQ Sauce, Beef, Cheese, Chicken, Mushrooms, Pepperoni, Salami    |
+| 14        | 10       | 104         | 1        | 2020-01-11 18:34:49.000 | Meatlovers: 2x Bacon, Beef, 2x Cheese, Chicken, Pepperoni, Salami                    |
