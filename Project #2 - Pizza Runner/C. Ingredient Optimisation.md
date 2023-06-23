@@ -224,9 +224,9 @@ The most common exclusion was Cheese.
 
 To solve this question: 
 
-* I created 3 CTEs: `extras_cte`, `exclusions_cte`, and then combining them into `union_cte`
-* I LEFT JOINED `union_cte` with `#customer_orders_temp`, then JOINED with `pizza_names`
-* Then I used `CONCAT_WS` with `STRING_AGG` to obtain the result
+- I created 3 CTEs: `extras_cte`, `exclusions_cte`, and then combining them into `union_cte`
+- I LEFT JOINED `union_cte` with `#customer_orders_temp`, then JOINED with `pizza_names`
+- Then I used `CONCAT_WS` with `STRING_AGG` to obtain the result
 
 ````sql
 WITH extras_cte AS (
@@ -328,6 +328,10 @@ GROUP BY
 
 ### Q5. Generate an alphabetically ordered comma separated ingredient list for each pizza order from the `customer_orders` table and add a `2x` in front of any relevant ingredients
 - For example: `"Meat Lovers: 2xBacon, Beef, ... , Salami"`
+
+To solve this question:
+- I created a CTE in which each line displays an ingredient for an ordered pizza (add '2x' for extras and remove exclusions as well)
+- I used `CONCAT` and `STRING_AGG` to obtain the result
 
 ````sql
 WITH ingredients AS (
