@@ -476,3 +476,15 @@ SELECT
 FROM freq_ingredients
 GROUP BY topping_name
 ORDER BY times_used DESC;
+
+
+-- D. Pricing and Ratings
+
+--1.
+
+SELECT *
+  --SUM(CASE WHEN pizza_id = 1 THEN 12 ELSE 10 END) AS money_earned
+FROM #customer_orders_temp c
+JOIN #runner_orders_temp r
+  ON c.order_id = r.order_id
+WHERE cancellation IS NULL;
