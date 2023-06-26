@@ -487,3 +487,15 @@ FROM #customer_orders_temp c
 JOIN #runner_orders_temp r
   ON c.order_id = r.order_id
 WHERE cancellation IS NULL;
+
+--2. 
+
+DECLARE @basecost INT
+SET @basecost = 138
+
+SELECT
+  @basecost + SUM(CASE WHEN t.topping_name = 'Cheese' THEN 2 
+  ELSE 1 END) AS updated_money_earned
+FROM #newextras e 
+JOIN pizza_toppings t 
+  ON e.extra_id = t.topping_id
