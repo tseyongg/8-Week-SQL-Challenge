@@ -499,3 +499,29 @@ SELECT
 FROM #newextras e 
 JOIN pizza_toppings t 
   ON e.extra_id = t.topping_id
+
+--3.
+ 
+DROP TABLE IF EXISTS ratings
+CREATE TABLE ratings (
+  order_id INT,
+  rating INT
+);
+INSERT INTO ratings 
+  (order_id, rating)
+VALUES
+  (1,4),
+  (2,1),
+  (3,4),
+  (4,5),
+  (5,3),
+  (6,4),
+  (7,2),
+  (8,5),
+  (9,3),
+  (10,4);
+
+  SELECT *
+  FROM ratings;
+
+  --4.

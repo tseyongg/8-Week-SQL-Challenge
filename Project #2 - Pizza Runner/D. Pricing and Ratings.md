@@ -55,3 +55,62 @@ JOIN pizza_toppings t
 | updated_money_earned |
 | -------------------- |
 | 145                  |
+
+***
+
+### Q3. The Pizza Runner team now wants to add an additional ratings system that allows customers to rate their runner, how would you design an additional table for this new dataset - generate a schema for this new table and insert your own data for ratings for each successful customer order between 1 to 5.
+
+````sql
+DROP TABLE IF EXISTS ratings
+CREATE TABLE ratings (
+  order_id INT,
+  rating INT
+);
+INSERT INTO ratings 
+  (order_id, rating)
+VALUES
+  (1,4),
+  (2,1),
+  (3,4),
+  (4,5),
+  (5,3),
+  (6,4),
+  (7,2),
+  (8,5),
+  (9,3),
+  (10,4);
+
+  SELECT *
+  FROM ratings;
+````
+
+| order_id | rating |
+| -------- | ------ |
+| 1        | 4      |
+| 2        | 1      |
+| 3        | 4      |
+| 4        | 5      |
+| 5        | 3      |
+| 6        | 4      |
+| 7        | 2      |
+| 8        | 5      |
+| 9        | 3      |
+| 10       | 4      |
+
+***
+
+### Q4. Using your newly generated table - can you join all of the information together to form a table which has the following information for successful deliveries?
+- `customer_id`
+- `order_id`
+- `runner_id`
+- `rating`
+- `order_time`
+- `pickup_time`
+- Time between order and pickup
+- Delivery duration
+- Average speed
+- Total number of pizzas
+
+````sql
+
+````
