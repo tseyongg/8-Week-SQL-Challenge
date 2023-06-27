@@ -525,3 +525,30 @@ VALUES
   FROM ratings;
 
   --4.
+
+SELECT
+  c.customer_id,
+  c.order_id,
+  r.runner_id,
+  ra.rating,
+  c.order_time,
+  r.pickup_time,
+  DATEDIFF(MINUTE, c.order_time, r.pickup_time) AS time_btwn,
+  r.duration,
+  ROUND(AVG(r.duration / r.duration * 60), 1) AS avg_speed,
+  COUNT(c.order_id) AS pizza_count
+FROM #customer_orders_temp c 
+JOIN #runner_orders_temp r 
+  ON c.order_id = r.order_id
+JOIN ratings ra 
+  ON c.order_id = ra.order_id
+WHERE r.cancellation IS NULL
+GROUP BY
+  c.customer_id,
+  c.order_id,
+  r.runner_id,
+  ra.rating,
+  c.order_time,
+  r.pickup_time,
+  r.duration
+ORDER BY customer_id;
