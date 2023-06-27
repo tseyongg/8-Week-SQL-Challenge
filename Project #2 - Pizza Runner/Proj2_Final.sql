@@ -535,7 +535,7 @@ SELECT
   r.pickup_time,
   DATEDIFF(MINUTE, c.order_time, r.pickup_time) AS time_btwn,
   r.duration,
-  ROUND(AVG(r.duration / r.duration * 60), 1) AS avg_speed,
+  ROUND(AVG(r.distance / r.duration * 60), 1) AS avg_speed,
   COUNT(c.order_id) AS pizza_count
 FROM #customer_orders_temp c 
 JOIN #runner_orders_temp r 
