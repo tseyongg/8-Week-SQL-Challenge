@@ -552,3 +552,14 @@ GROUP BY
   r.pickup_time,
   r.duration
 ORDER BY customer_id;
+
+--5.
+
+DECLARE @basecost INT
+SET @basecost = 138
+
+SELECT 
+  @basecost AS revenue,
+  ROUND(SUM(distance) * 0.3, 2) AS paid_to_runners,
+  @basecost - SUM(distance) * 0.3 AS money_left
+FROM #runner_orders_temp;

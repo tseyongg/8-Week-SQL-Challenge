@@ -153,3 +153,22 @@ ORDER BY customer_id;
 ***
 
 ### Q5. If a Meat Lovers pizza was $12 and Vegetarian $10 fixed prices with no cost for extras and each runner is paid $0.30 per kilometre traveled - how much money does Pizza Runner have left over after these deliveries?
+
+````sql
+DECLARE @basecost INT
+SET @basecost = 138
+
+SELECT 
+  @basecost AS revenue,
+  ROUND(SUM(distance) * 0.3, 2) AS paid_to_runners,
+  @basecost - SUM(distance) * 0.3 AS money_left
+FROM #runner_orders_temp;
+````
+
+| revenue | paid_to_runners | money_left  |
+| ------- | --------------- | ----------- |
+| 138     | 43.56           | 94.44       |
+
+***
+
+Click [here]() to view my solutions to the next portion, **E. Bonus Questions!**
