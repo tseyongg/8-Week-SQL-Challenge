@@ -47,9 +47,9 @@ There are some known data issues with few tables. Data cleaning was performed an
 
 This is a lengthy case study, thus, it is divided into five sections (after data cleaning).
 
-  - [0. Data Cleaning](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/0.%20Data%20Clean.md)
+  - [0. Data Cleaning](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/0.%20Data%20Clean.md)
   - [A. Pizza Metrics](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/A.%20Pizza%20Metrics.md)
-  - [B. Runner and Customer Experience](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md)
-  - [C. Ingredient Optimisation](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/C.%20Ingredient%20Optimisation.md)
-  - [D. Pricing and Ratings](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md)
+  - [B. Runner and Customer Experience](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/B.%20Runner%20and%20Customer%20Experience.md)
+  - [C. Ingredient Optimisation](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/C.%20Ingredient%20Optimisation.md)
+  - [D. Pricing and Ratings](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/D.%20Pricing%20and%20Ratings.md)
   - [E. Bonus Questions](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/E.%20Bonus%20Questions.md)
