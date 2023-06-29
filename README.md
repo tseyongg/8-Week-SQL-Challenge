@@ -9,7 +9,7 @@ Each project folder contains the following items:
 - A readme file explaining the business problem and datasets used
 - A solutions folder comprising of a collection of MD files with SQL queries, solution tables, and relevant explanations
 - A SQL file to create the schema, tables and loading data
-- The full aggregated SQL script containing all the queries 
+- A full aggregated SQL script containing all the queries 
 
 Note:
 
