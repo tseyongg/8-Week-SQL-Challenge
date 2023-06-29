@@ -563,3 +563,16 @@ SELECT
   ROUND(SUM(distance) * 0.3, 2) AS paid_to_runners,
   @basecost - SUM(distance) * 0.3 AS money_left
 FROM #runner_orders_temp;
+
+
+-- E.
+
+INSERT INTO pizza_names (pizza_id, pizza_name)
+VALUES (3, 'Supreme');
+
+ALTER TABLE pizza_recipes
+ALTER COLUMN toppings VARCHAR(50);
+
+INSERT INTO pizza_recipes (pizza_id, toppings)
+VALUES (3, '1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12');
+
