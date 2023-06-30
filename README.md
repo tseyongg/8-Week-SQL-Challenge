@@ -1,4 +1,4 @@
-# 8-Week-SQL-Challenge
+# :key: 8-Week-SQL-Challenge
 
 Here, I showcase my personal solutions to the 8 case studies from the **[#8WeekSQLChallenge](https://8weeksqlchallenge.com)**. 
 
