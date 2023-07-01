@@ -463,4 +463,4 @@ ORDER BY times_used DESC;
 
 ***
 
-Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/D.%20Pricing%20and%20Ratings.md) to view my solutions to the next portion, **D. Pricing and Ratings!**
+Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/D.%20Pricing%20and%20Ratings.md) to view my solutions to the next portion, **D. Pricing and Ratings!**
