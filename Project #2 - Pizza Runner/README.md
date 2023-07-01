@@ -11,14 +11,14 @@ Note: All information regarding the case study has been sourced from the followi
 
 ***
 
-## Business Task
+## :dart: Business Task
 Danny is expanding his new Pizza Empire and at the same time, he wants to Uberize it, so Pizza Runner was launched!
 
 Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runner Headquarters (otherwise known as Danny’s house) and also maxed out his credit card to pay freelance developers to build a mobile app to accept orders from customers. 
 
 ***
 
-## Entity Relationship Diagram
+## :link: Entity Relationship Diagram
 
 ![Pizza Runner](https://user-images.githubusercontent.com/81607668/242152356-78099a4e-4d0e-421f-a560-b72e4321f530.png)
 
@@ -43,7 +43,7 @@ There are some known data issues with few tables. Data cleaning was performed an
 
 ***
 
-## Solutions
+## :bulb: Solutions
 
 This is a lengthy case study, thus, it is divided into five sections (after data cleaning):
 
