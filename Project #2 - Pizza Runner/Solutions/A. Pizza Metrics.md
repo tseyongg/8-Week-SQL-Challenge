@@ -206,4 +206,4 @@ GROUP BY DATENAME(WEEKDAY, order_time), DATEPART(WEEKDAY, order_time);
 
 ***
 
-Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/B.%20Runner%20and%20Customer%20Experience.md) to view my solutions to the next portion, **B. Runner and Customer Experience!**
+Click [here](https://github.com/tseyongg/Tse_Yong_SQL_Projects/blob/main/Project%20%232%20-%20Pizza%20Runner/Solutions/B.%20Runner%20and%20Customer%20Experience.md) to view my solutions to the next portion, **B. Runner and Customer Experience!**
