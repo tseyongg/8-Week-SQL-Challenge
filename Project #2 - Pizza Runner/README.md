@@ -1,7 +1,7 @@
 # 🍕 Project #2 Pizza Runner
 <img src="https://8weeksqlchallenge.com/images/case-study-designs/2.png" alt="Image" width="500" height="500">
 
-## :page_with_curl Table of Contents
+## :page_with_curl: Table of Contents
 - [Business Task](#business-task)
 - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Data Cleaning](#data-cleaning)
