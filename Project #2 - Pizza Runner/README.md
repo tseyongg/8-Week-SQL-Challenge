@@ -24,7 +24,7 @@ Danny started by recruiting “runners” to deliver fresh pizza from Pizza Runn
 
 ***
 
-## Data Cleaning
+## :construction: Data Cleaning
 
 There are some known data issues with few tables. Data cleaning was performed and saved in temporary tables before attempting the case study solutions.
 

@@ -10,7 +10,7 @@ Note: All information regarding the case study has been sourced from the followi
 
 ***
 
-## Business Task
+## :dart: Business Task
 Danny wants to use the data to answer a few simple questions about his customers, especially about their visiting patterns, how much money they’ve spent and also which menu items are their favourite.
 
 ***
@@ -21,7 +21,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 
 ***
 
-## Questions and Solutions
+## :bulb: Questions and Solutions
 
 Please join me in executing the queries using PostgreSQL on [DB Fiddle](https://www.db-fiddle.com/f/2rM8RAnq7h5LLDTzZiRWcd/138). It would be great to work together on the questions!
 
