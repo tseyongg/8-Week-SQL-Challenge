@@ -1,7 +1,7 @@
 # 🍜 Project #1: Danny's Diner
 <img src="https://8weeksqlchallenge.com/images/case-study-designs/1.png" alt="Image" width="500" height="500">
 
-## 📚 Table of Contents
+## :page_with_curl: Table of Contents
 - [Business Task](#business-task)
 - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Questions and Solutions](#questions-and-solutions)
@@ -15,7 +15,7 @@ Danny wants to use the data to answer a few simple questions about his customers
 
 ***
 
-## Entity Relationship Diagram
+## :link: Entity Relationship Diagram
 
 ![image](https://user-images.githubusercontent.com/81607668/127271130-dca9aedd-4ca9-4ed8-b6ec-1e1920dca4a8.png)
 
